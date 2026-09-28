@@ -215,6 +215,7 @@ dialog.legalbox::backdrop{background:rgba(0,40,85,.4)}
     <label class="burger" for="menuToggle" title="Menü"><i></i></label>
     <nav class="menu" id="menu" aria-label="Alle Inhalte"><ul>
       <li><button type="button" data-soon="invest">Investment Summary<small>PDF · folgt</small></button></li>
+      <li><button type="button" data-soon="investlang">Investment Langversion<small>PDF · folgt</small></button></li>
       <li><button type="button" data-soon="impact">Impact Report 2025<small>PDF · folgt</small></button></li>
       <li><button type="button" data-soon="studie">Generationenstudie 2025<small>PDF · folgt</small></button></li>
       <li><button type="button" data-soon="gaeste">Gästebefragung 2026<small>PDF · folgt</small></button></li>
@@ -301,6 +302,7 @@ dialog.legalbox::backdrop{background:rgba(0,40,85,.4)}
    ════════════════════════════════════════════════════════════ */
 const ITEMS = [
   { id:"invest",     label:"Investment Summary",       type:"PDF",     url:"" },
+  { id:"investlang", label:"Investment Langversion",   type:"PDF",     url:"" },   // nur im Menü
   { id:"impact",     label:"Impact Report 2025",       type:"PDF",     url:"" },
   { id:"studie",     label:"Generationenstudie 2025",  type:"PDF",     url:"" },
   { id:"gaeste",     label:"Gästebefragung 2026",      type:"PDF",     url:"" },
