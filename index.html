@@ -67,7 +67,7 @@ a{color:inherit}
 /* ───────── Bühne: Vitrine ─────────
    Szene = Originalzeichnung 1920 × 1080. Der sichtbare Ausschnitt wird über
    --cx/--cy/--cw/--ch gesetzt (Desktop und Hochformat unterschiedlich).       */
-.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;padding:4px 0 10px}
+.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;padding:6px 0 0}
 .stage{
   --cx:450;--cy:70;--cw:1030;--ch:1000;
   position:relative;overflow:hidden;
@@ -141,13 +141,13 @@ a{color:inherit}
 
 /* ───────── Kontakt-Button ───────── */
 .foot{
-  flex:none;display:grid;justify-items:center;gap:12px;
-  padding:0 16px calc(18px + env(safe-area-inset-bottom,0px))
+  flex:none;display:grid;justify-items:center;gap:24px;
+  padding:26px 16px calc(34px + env(safe-area-inset-bottom,0px))
 }
-.legal{margin:0;font-size:12.5px;color:#5B6B82;text-align:center;line-height:1.5}
+.legal{margin:0;font-size:13px;color:#5B6B82;text-align:center;line-height:1.6;letter-spacing:.01em}
 .legal a,.legal button{color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;cursor:pointer;font:inherit}
 .legal a:hover,.legal button:hover{color:var(--navy)}
-.legal .sep{opacity:.5;padding:0 6px}
+.legal .sep{opacity:.45;padding:0 10px}
 dialog.legalbox{
   border:0;padding:0;border-radius:16px;width:min(560px,calc(100vw - 32px));color:var(--ink);
   box-shadow:0 24px 60px rgba(0,40,85,.3)
@@ -189,7 +189,8 @@ dialog.legalbox::backdrop{background:rgba(0,40,85,.4)}
     width:min(100cqw, 100cqh * 1000 / 1004);
     height:min(100cqh, 100cqw * 1004 / 1000);
   }
-  .wrap{padding-bottom:6px}
+  .wrap{padding-bottom:0}
+  .foot{gap:16px;padding:14px 16px calc(22px + env(safe-area-inset-bottom,0px))}
 }
 @media (max-width: 520px){
   .bar{min-height:56px;padding-inline:14px}
