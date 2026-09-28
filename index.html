@@ -17,12 +17,12 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:linear-gradient(#DCF1FB, #FFFFFF 60%);color:var(--ink);font:15px/1.45 var(--font);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{margin:0;background:linear-gradient(#DCF1FB, #FFFFFF 60%);color:var(--ink);font:15px/1.45 var(--font);-webkit-font-smoothing:antialiased;overflow:hidden;display:flex;flex-direction:column}
 [hidden]{display:none!important}
 button{font:inherit;color:inherit}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--pink);outline-offset:4px;border-radius:8px}
-.app{height:100%;display:flex;flex-direction:column}
+.app{flex:1;min-height:0;display:flex;flex-direction:column}
 
 /* ───────── Titelleiste ───────── */
 .bar{
@@ -67,8 +67,7 @@ a{color:inherit}
 /* ───────── Bühne: Vitrine ─────────
    Szene = Originalzeichnung 1920 × 1080. Der sichtbare Ausschnitt wird über
    --cx/--cy/--cw/--ch gesetzt (Desktop und Hochformat unterschiedlich).       */
-.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;
-  padding:4px 0 calc(116px + env(safe-area-inset-bottom,0px))}
+.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;padding:4px 0 10px}
 .stage{
   --cx:450;--cy:70;--cw:1030;--ch:1000;
   position:relative;overflow:hidden;
@@ -141,19 +140,35 @@ a{color:inherit}
 .pick small{display:block;font-weight:400;opacity:.7;font-size:12px}
 
 /* ───────── Kontakt-Button ───────── */
+.foot{
+  flex:none;display:grid;justify-items:center;gap:12px;
+  padding:0 16px calc(18px + env(safe-area-inset-bottom,0px))
+}
+.legal{margin:0;font-size:12.5px;color:#5B6B82;text-align:center;line-height:1.5}
+.legal a,.legal button{color:inherit;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;cursor:pointer;font:inherit}
+.legal a:hover,.legal button:hover{color:var(--navy)}
+.legal .sep{opacity:.5;padding:0 6px}
+dialog.legalbox{
+  border:0;padding:0;border-radius:16px;width:min(560px,calc(100vw - 32px));color:var(--ink);
+  box-shadow:0 24px 60px rgba(0,40,85,.3)
+}
+dialog.legalbox::backdrop{background:rgba(0,40,85,.4)}
+.legalbox .inner{padding:26px 28px 22px;position:relative}
+.legalbox h2{margin:0 0 12px;font-size:20px}
+.legalbox p{margin:0 0 12px;font-size:14px;line-height:1.55;max-width:60ch}
+.legalbox .x{position:absolute;right:14px;top:12px;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ice);background:#fff;cursor:pointer;font-size:18px}
 .cta{
-  position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;
   display:inline-flex;align-items:center;gap:10px;text-decoration:none;
   background:var(--pink);color:#fff;border-radius:999px;padding:14px 26px;font-weight:700;font-size:16px;
   box-shadow:0 10px 26px rgba(230,60,140,.4);white-space:nowrap;max-width:calc(100vw - 28px);
   transition:transform .15s ease, box-shadow .15s ease, background .15s ease
 }
-.cta:hover{background:#D12079;transform:translateX(-50%) translateY(-2px);box-shadow:0 14px 30px rgba(230,60,140,.5)}
-.cta:active{transform:translateX(-50%) translateY(0)}
+.cta:hover{background:#D12079;transform:translateY(-2px);box-shadow:0 14px 30px rgba(230,60,140,.5)}
+.cta:active{transform:translateY(0)}
 .cta svg{flex:none}
 .cta span{overflow:hidden;text-overflow:ellipsis}
 .toast{
-  position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;
+  position:fixed;left:50%;bottom:calc(128px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;
   background:var(--navy);color:#fff;border-radius:999px;padding:10px 20px;font-weight:600;font-size:14px;
   box-shadow:0 10px 30px rgba(0,40,85,.28);white-space:nowrap;max-width:calc(100vw - 28px);overflow:hidden;text-overflow:ellipsis;
   pointer-events:none;animation:toastIn .25s ease-out
@@ -162,7 +177,7 @@ a{color:inherit}
 @media (max-width:420px){ .cta{font-size:15px;padding:13px 20px} }
 
 .nojs{
-  position:fixed;left:50%;bottom:calc(72px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:22;
+  position:fixed;left:50%;bottom:calc(150px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:22;
   background:var(--yellow);color:var(--navy);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:600;
   max-width:calc(100vw - 28px);text-align:center;box-shadow:0 8px 24px rgba(0,40,85,.18)
 }
@@ -174,7 +189,7 @@ a{color:inherit}
     width:min(100cqw, 100cqh * 1000 / 1004);
     height:min(100cqh, 100cqw * 1004 / 1000);
   }
-  .wrap{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+  .wrap{padding-bottom:6px}
 }
 @media (max-width: 520px){
   .bar{min-height:56px;padding-inline:14px}
@@ -215,6 +230,7 @@ a{color:inherit}
         </ul></details></li>
       <hr>
       <li><a href="mailto:invest@vollpension.wien?subject=Investment%20Vollpension">Kontakt<small>invest@vollpension.wien</small></a></li>
+      <li><button type="button" id="legalBtnMenu">Rechtlicher Hinweis<small>Impressum · Datenschutz</small></button></li>
       <hr>
       <li><button type="button" id="adminLink">Admin-Bereich<small>nur Team · Prototyp</small></button></li>
     </ul></nav>
@@ -254,10 +270,29 @@ a{color:inherit}
 </div>
 
 <noscript><div class="nojs">Hinweis: Die Vorschau deines Mailprogramms führt kein JavaScript aus. Die Links funktionieren trotzdem – Animation, Namensanzeige und Admin-Bereich siehst du, wenn du die Seite im Browser öffnest.</div></noscript>
-<a class="cta" id="cta" href="mailto:invest@vollpension.wien?subject=Investment%20Vollpension" aria-label="Kontakt aufnehmen: invest@vollpension.wien">
-  <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2 7.5-4.7H4.5L12 12.2Zm0 2.3L4 9.5V17h16V9.5l-8 5Z"/></svg>
-  <span>invest@vollpension.wien</span></a>
+<footer class="foot">
+  <a class="cta" id="cta" href="mailto:invest@vollpension.wien?subject=Investment%20Vollpension" aria-label="Kontakt aufnehmen: invest@vollpension.wien">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2 7.5-4.7H4.5L12 12.2Zm0 2.3L4 9.5V17h16V9.5l-8 5Z"/></svg>
+    <span>invest@vollpension.wien</span></a>
+  <p class="legal">
+    <!-- Adressen bitte prüfen -->
+    <a href="https://vollpension.wien/impressum" target="_blank" rel="noopener">Impressum</a><span class="sep">·</span>
+    <a href="https://vollpension.wien/datenschutz" target="_blank" rel="noopener">Datenschutz</a><span class="sep">·</span>
+    <button type="button" id="legalBtn">Rechtlicher Hinweis</button>
+  </p>
+</footer>
 <div class="toast" id="toast" hidden></div>
+
+<dialog class="legalbox" id="legalDlg" aria-labelledby="legalTitle">
+  <div class="inner">
+    <button class="x" type="button" id="legalClose" aria-label="Schließen">×</button>
+    <h2 id="legalTitle">Rechtlicher Hinweis</h2>
+    <p>Diese Seite dient ausschließlich der ersten Information ausgewählter Interessent:innen und richtet sich nicht an die Öffentlichkeit.</p>
+    <p>Sie stellt weder ein Angebot noch eine Einladung zur Zeichnung oder zum Erwerb von Wertpapieren oder Beteiligungen dar und ersetzt keine Anlageberatung.</p>
+    <p>Die hier verlinkten Unterlagen und Kennzahlen sind vertraulich, nicht zur Weitergabe bestimmt und geben den Stand zum [Datum] wieder. Zukunftsbezogene Aussagen beruhen auf Annahmen und können vom tatsächlichen Verlauf abweichen.</p>
+    <p>Eine allfällige Beteiligung erfolgt ausschließlich auf Grundlage der endgültigen Vertragsunterlagen.</p>
+  </div>
+</dialog>
 
 <script>
 /* ════════════════════════════════════════════════════════════
@@ -407,6 +442,13 @@ function track(itemId){
   }
 })();
 
+/* Rechtlicher Hinweis */
+const legalDlg = $("#legalDlg");
+const openLegal = () => legalDlg.showModal();
+$("#legalBtn").addEventListener("click", openLegal);
+$("#legalClose").addEventListener("click", () => legalDlg.close());
+legalDlg.addEventListener("click", e => { if (e.target === legalDlg) legalDlg.close(); });
+
 /* Menü */
 const menuToggle = $("#menuToggle"), menu = $("#menu");
 const menuOpen = () => menuToggle.checked;
@@ -416,6 +458,7 @@ document.querySelector("label.burger").addEventListener("click", e => e.stopProp
 menu.addEventListener("click", e => {
   e.stopPropagation();
   if (e.target.closest("#adminLink")) { setMenu(false); window.VPAdmin && window.VPAdmin.open(); return; }
+  if (e.target.closest("#legalBtnMenu")) { setMenu(false); openLegal(); return; }
   const s = e.target.closest("[data-soon]");
   if (s) { soon(byId[s.dataset.soon]); return; }
   if (e.target.closest("a")) setMenu(false);
