@@ -114,10 +114,12 @@ a{color:inherit}
 
 /* Oma: blinzelt, schaut umher und winkt */
 .oma-eyes{opacity:0;animation:blink 7s infinite}
-.oma-pupils{transition:transform .5s cubic-bezier(.3,.8,.4,1)}
+.oma-pupils{transition:transform .5s cubic-bezier(.3,.8,.4,1);animation:pupilBlink 7s infinite}
 .hand-r{transform-origin:40% 90%;animation:waveR 9s ease-in-out infinite}
 .hand-l{transform-origin:60% 90%;animation:waveL 9s ease-in-out infinite}
 @keyframes blink{0%,95.5%,100%{opacity:0}96.5%,98.5%{opacity:1}}
+/* Pupillen während des Blinzelns ausblenden, sonst überlagern sie die geschlossenen Augen */
+@keyframes pupilBlink{0%,95.4%,100%{opacity:1}96.2%,98.8%{opacity:0}}
 @keyframes waveR{0%,72%,100%{transform:rotate(0)}78%{transform:rotate(-11deg)}84%{transform:rotate(4deg)}90%{transform:rotate(-7deg)}}
 @keyframes waveL{0%,30%,100%{transform:rotate(0)}36%{transform:rotate(9deg)}42%{transform:rotate(-4deg)}48%{transform:rotate(6deg)}}
 
@@ -168,7 +170,7 @@ a{color:inherit}
 }
 @media (prefers-reduced-motion: reduce){
   .obj img,.oma-eyes,.hand-r,.hand-l{animation:none!important}
-  .oma-pupils{transition:none!important}
+  .oma-pupils{transition:none!important;animation:none!important}
 }
 </style>
 </head>
