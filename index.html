@@ -67,7 +67,8 @@ a{color:inherit}
 /* ───────── Bühne: Vitrine ─────────
    Szene = Originalzeichnung 1920 × 1080. Der sichtbare Ausschnitt wird über
    --cx/--cy/--cw/--ch gesetzt (Desktop und Hochformat unterschiedlich).       */
-.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;padding:0 0 60px}
+.wrap{flex:1;min-height:0;container-type:size;display:grid;place-items:center;
+  padding:4px 0 calc(116px + env(safe-area-inset-bottom,0px))}
 .stage{
   --cx:450;--cy:70;--cw:1030;--ch:1000;
   position:relative;overflow:hidden;
@@ -138,7 +139,7 @@ a{color:inherit}
 
 /* ───────── Kontakt-Button ───────── */
 .cta{
-  position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;
+  position:fixed;left:50%;bottom:calc(26px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;
   display:inline-flex;align-items:center;gap:10px;text-decoration:none;
   background:var(--pink);color:#fff;border-radius:999px;padding:14px 26px;font-weight:700;font-size:16px;
   box-shadow:0 10px 26px rgba(230,60,140,.4);white-space:nowrap;max-width:calc(100vw - 28px);
@@ -149,7 +150,7 @@ a{color:inherit}
 .cta svg{flex:none}
 .cta span{overflow:hidden;text-overflow:ellipsis}
 .toast{
-  position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;
+  position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:21;
   background:var(--navy);color:#fff;border-radius:999px;padding:10px 20px;font-weight:600;font-size:14px;
   box-shadow:0 10px 30px rgba(0,40,85,.28);white-space:nowrap;max-width:calc(100vw - 28px);overflow:hidden;text-overflow:ellipsis;
   pointer-events:none;animation:toastIn .25s ease-out
@@ -170,7 +171,7 @@ a{color:inherit}
     width:min(100cqw, 100cqh * 1060 / 1000);
     height:min(100cqh, 100cqw * 1000 / 1060);
   }
-  .wrap{padding-bottom:56px}
+  .wrap{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
 }
 @media (max-width: 520px){
   .bar{min-height:56px;padding-inline:14px}
