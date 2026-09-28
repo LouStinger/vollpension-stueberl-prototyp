@@ -167,11 +167,11 @@ a{color:inherit}
 /* ───────── Hochformat / Handy ───────── */
 @media (max-aspect-ratio: 5/6), (max-width: 700px){
   .stage{
-    --cx:430;--cy:80;--cw:1060;--ch:1000;
-    width:min(100cqw, 100cqh * 1060 / 1000);
-    height:min(100cqh, 100cqw * 1000 / 1060);
+    --cx:500;--cy:72;--cw:915;--ch:1008;
+    width:min(100cqw, 100cqh * 915 / 1008);
+    height:min(100cqh, 100cqw * 1008 / 915);
   }
-  .wrap{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  .wrap{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px));align-items:end}
 }
 @media (max-width: 520px){
   .bar{min-height:56px;padding-inline:14px}
